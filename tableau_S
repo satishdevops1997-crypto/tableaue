@@ -1,4 +1,4 @@
-I used REGEXP_REPLACE and TRIM in Tableau to remove special characters and normalize customer names with single spaces.
+1) I used REGEXP_REPLACE and TRIM in Tableau to remove special characters and normalize customer names with single spaces.
 To ensure only single spaces, use this final version 
 
 TRIM(
@@ -12,3 +12,21 @@ TRIM(
         " "
     )
 )
+
+2) Validate Email IDs in Tableau
+IF REGEXP_MATCH(
+    [Email],
+    "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+)
+THEN "Valid Email"
+ELSE "Invalid Email"
+END
+
+next way
+IF REGEXP_MATCH(
+    [Email],
+    "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+)
+THEN "Valid Email"
+ELSE "Invalid Email"
+END
